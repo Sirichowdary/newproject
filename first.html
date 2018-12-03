@@ -1,0 +1,130 @@
+<!doctype html>
+<html ng-app="myModule">
+<head>
+  <!--<script src="angular.min.js"></script> -->
+  <script src="angular.js"></script> 
+  <script src="Script.js"></script> 
+  <link href="Style.css" rel="stylesheet" />
+</head>
+<body ng-controller="myController">
+   <!--  USING CONTROLLER OBJECT DISPLAYING THE PROPERTIES-->
+  <div>
+       First Name = {{ employee.firstName }}
+  </div>
+  <div> 
+       Last Name = {{ employee.lastName }}
+  </div>
+  <div>
+       Gender = {{ employee.gender }}
+   </div>
+   </div>
+<!--  USING CONTROLER DISPLAYING DIRECT MESSAGE--> 
+   <div>
+       {{ message }}
+   </div>
+   <!--  FIRST EXAMPLE-->
+   <div>
+       10 + 20 = {{ 10 + 20 }}
+   </div>
+    <div>
+       {{ 30 == 30 }}   {{ 30 == 20 }}
+   </div>
+   <div>
+        30 + 20 = {{ 30 + 20 }}
+   </div>
+<!-- DISPLAY NAMES DICLARED IN ARRAY -->
+    <div>
+      {{ {name:"nandu",job:"developer"}.name}}
+      {{ {name:"nandu",job:"developer"}.job}}
+      {{ ['nandu','santhu','abc'][1] }}
+   </div> 
+
+<!--  TO WAY DATA BINDING -->
+ <div><h4> Two Way Binding </h4>
+          <input type="text" ng-model="message"/>
+            <br/>
+          <input type="text" ng-model="msg"/><br/>
+          {{ msg }}
+   <table>
+     <tr><td>First Name:</td><td><input type="text" ng-model="employee.firstName"/></td></tr>
+     <tr><td>Last Name:</td><td><input type="text" ng-model="employee.lastName"/></td></tr>
+     <tr><td>Gender:</td><td><input type="text" ng-model="employee.gender"/></td></tr>
+   </table>
+
+   <table>
+     <tr><td>First Name:</td><td>{{ employee.firstName }}</td></tr>
+     <tr><td>Last Name:</td><td>{{ employee.lastName }}</td></tr>
+     <tr><td>Gender:</td><td>{{ employee.gender }}</td></tr>
+   </table>
+  </div>
+<div>
+
+<!--  ng-repeat && nested ng-repeat -->
+<table>
+    <caption> Display Data in Table  </caption>
+<thead><tr><th>Name</th>
+<th>Gender</th>
+<th>salary</th></tr></thead>
+<tbody>
+     <tr ng-repeat="emp in employees">
+     <td>{{ emp.name }}</td>
+     <td>{{ emp.gender }}</td>
+     <td>{{ emp.salary }}</td></tr></tbody>
+   </table>
+  </div>
+
+<div> 
+<h4>  Display Countries and Cities</h4>
+<ul>
+<li ng-repeat="country in countries">
+   {{ country.cname }}
+   <ul>
+     <li ng-repeat="city in country.cities">
+   {{ city.ctname }}
+     </li>
+   </ul>
+</li>
+</ul>
+</div>
+<!-- EVENTS -->
+<div>
+  <table>
+    <caption> Technologies with events </caption>
+    <thead>
+       <tr>
+         <th>Name</th>
+         <th>Likes</th>
+         <th>Dislikes</th>
+         <th>Like/Dislike</th>
+	</tr></thead>
+      <tbody><tr ng-repeat="technology in technologies">
+       <td>{{ technology.name }}</td>
+       <td> {{ technology.likes }} </td>
+       <td> {{technology.dislikes }} </td>
+       <td> <input type="button" ng-click="incrementLikes(technology)" value="Like"> 
+           <input type="button" ng-click="incrementDislikes(technology)" value="DisLike"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--  DISPLAY IMAGE-->
+ <div>
+<h4>  Display Image</h4>
+       First Name = {{ employee.firstName }}
+  </div>
+  <div> 
+       Last Name = {{ employee.lastName }}
+  </div>
+  <div>
+     <!-- <img src="C:/Users/MicroSoft/Pictures/Camera Roll/JGCA0138.jpg" alt="nandini img" style="height=100px; width=200px;"/>-->
+     <!--<img src="{{ nandiniimg.pgn}}" 
+                alt="{{ employee.firstName + ' picture' }} "
+               style="height=100px; width=200px;"/> // get 404 error becouse it default
+      search for image from here only bainding expresion not evalvated here to fix this use ng-src directive-->
+
+    <img ng-src="{{ nandiniimg.pgn}}" 
+                alt="{{ employee.firstName + ' picture' }} "
+               style="height=100px; width=200px;"/>
+   </div>
+</body>
+</html>
